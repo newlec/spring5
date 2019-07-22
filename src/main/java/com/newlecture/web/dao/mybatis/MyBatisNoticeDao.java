@@ -3,6 +3,7 @@ package com.newlecture.web.dao.mybatis;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -80,8 +81,10 @@ public class MyBatisNoticeDao implements NoticeDao {
 
 	@Override
 	public int update(Notice notice) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		
+		return noticeDao.update(notice);
 	}
 
 	@Override

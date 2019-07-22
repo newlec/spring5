@@ -3,9 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newlecture.web.dao.NoticeDao">
-	<!-- <select id="get" resultType="com.newlecture.web.entity.Notice">
+		
+	<resultMap id="noticeMap" type="com.newlecture.web.entity.Notice">
+		<!-- <result column="id" property="id" jdbcType="NUMERIC" javaType="Integer"/>
+		<result column="title" property="title" jdbcType="NVARCHAR" javaType="String" />
+		<result column="content" property="content" jdbcType="CLOB" javaType="String"/> -->
+		<result column="writer_id" property="writerId" jdbcType="VARCHAR"  javaType="String"/>
+		<!-- <result column="regdate" property="regDate" jdbcType="TIMESTAMP"  javaType="java.util.Date"/>
+		<result column="hit" property="hit" jdbcType="NUMERIC" javaType="Integer"/> -->
+	</resultMap>
+		
+	<!-- <select id="get" resultMap="noticeMap" > -->		
+	<select id="get" resultType="com.newlecture.web.entity.Notice">
+	
+		<!-- 1. how to
+		select id,title,content,writer_id writerId,regdate,hit from NOTICE where id=#{id} -->
 		select * from NOTICE where id=#{id}
-	</select> -->
+		
+	</select>
 	
 	<select id="getList" resultType="com.newlecture.web.entity.NoticeView">
 		<!-- 
@@ -30,6 +45,15 @@
 	VALUES(#{id},#{title},#{content},#{writerId})
 </insert>
 	
-
+<update id="update" parameterType="com.newlecture.web.entity.Notice">
+	update Notice 
+	set 
+		title=#{title}, 
+		content=#{content}, 
+		WRITER_ID=#{writerId}, 
+		hit=#{hit}, 
+		regDate=#{regDate}
+	whre id=#{id}
+</update>
 	
 </mapper>

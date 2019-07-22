@@ -25,7 +25,7 @@ public interface NoticeDao {
 			, @Param("field") String field
 			, @Param("query") String query) throws ClassNotFoundException, SQLException;
 	
-	@Select("select * from NOTICE where id=#{id}")
+	//@Select("select * from NOTICE where id=#{id}")
 	Notice get(int id) throws ClassNotFoundException, SQLException;
 	Notice getPrev(int id) throws ClassNotFoundException, SQLException;
 	Notice getNext(int id) throws ClassNotFoundException, SQLException;

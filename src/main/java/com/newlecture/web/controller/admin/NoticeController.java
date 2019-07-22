@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.type.JdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,15 +35,25 @@ public class NoticeController {
 	//private SqlSessionTemplate sqlSesson;
 
 	@GetMapping("edit")
-	public String edit(Integer id) {
-		
-		
+	public String edit(Integer id, Model model) throws ClassNotFoundException, SQLException {
+			
+		model.addAttribute("notice", noticeDao.get(id));
 		
 		return "admin/notice/edit";
 	}
 	
 	@PostMapping("edit")
-	public String edit(Notice notice) {
+	public String edit(Notice notice) throws ClassNotFoundException, SQLException {
+		
+		Notice n = noticeDao.get(notice.getId());
+		// title, content, id(hidden)
+		n.setTitle(notice.getTitle());
+		n.setContent(notice.getContent());
+		
+		noticeDao.update(n);
+		
+		//update Notice set title=?, content=?, writerId=?, hit=?, regDate=?
+		//		where id= ?
 		
 		return "redirect:detail?id="+notice.getId();
 	}

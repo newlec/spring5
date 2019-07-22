@@ -1,12 +1,13 @@
 package com.newlecture.web.controller;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.newlecture.web.dao.FileDao;
+import com.newlecture.web.entity.File;
 
 @Controller
 @RequestMapping("/")
@@ -39,21 +41,20 @@ public class RootController {
 	 * 
 	 */
 	
-	//@Autowired
+	@Autowired
 	private FileDao fileDao;
 	
 	@GetMapping("file-list")
 	@ResponseBody
-	public String fileList() {
+	public String fileList(HttpServletRequest request) throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 		
+		ServletContext application = request.getServletContext();
 		String urlPath = "/upload";
-		String realPath = "";
+		String realPath = application.getRealPath(urlPath);
 		
-		//List<File> list = fileDao.getList(realPath);
-		
-		
-		
-		return "";
+		String jsonList = fileDao.getJSONList(realPath);
+							
+		return jsonList;
 	}
 	
 	
