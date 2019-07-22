@@ -15,13 +15,13 @@ public interface NoticeDao {
 	int getCount(String field, String query) throws ClassNotFoundException, SQLException;
 	
 	List<NoticeView> getList() throws ClassNotFoundException, SQLException;
-	List<NoticeView> getList(int page) throws ClassNotFoundException, SQLException;
+	List<NoticeView> getList(Integer page) throws ClassNotFoundException, SQLException;
 	
 	
 	//@Select("SELECT * FROM NOTICE_VIEW\r\n" + 
 	//		"		WHERE ${field} LIKE '%${query}%' \r\n" + 
 	//		"			AND NUM BETWEEN 1+(#{page}-1)*10 AND #{page}*10")
-	List<NoticeView> getList(@Param("page") int page
+	List<NoticeView> getList(@Param("page") Integer page
 			, @Param("field") String field
 			, @Param("query") String query) throws ClassNotFoundException, SQLException;
 	

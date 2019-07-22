@@ -33,17 +33,17 @@ public class MyBatisNoticeDao implements NoticeDao {
 	@Override
 	public List<NoticeView> getList() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		return getList(1, "title", "");
+		return getList(null, "title", "");
 	}
 
 	@Override
-	public List<NoticeView> getList(int page) throws ClassNotFoundException, SQLException {
+	public List<NoticeView> getList(Integer page) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return getList(page, "title", "");
 	}
 
 	@Override
-	public List<NoticeView> getList(int page, String field, String query) throws ClassNotFoundException, SQLException {
+	public List<NoticeView> getList(Integer page, String field, String query) throws ClassNotFoundException, SQLException {
 		
 		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);	
 				

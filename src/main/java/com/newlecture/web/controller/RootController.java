@@ -39,7 +39,7 @@ public class RootController {
 	 * 
 	 */
 	
-	@Autowired
+	//@Autowired
 	private FileDao fileDao;
 	
 	@GetMapping("file-list")
@@ -49,7 +49,7 @@ public class RootController {
 		String urlPath = "/upload";
 		String realPath = "";
 		
-		List<File> list = fileDao.getList(realPath);
+		//List<File> list = fileDao.getList(realPath);
 		
 		
 		

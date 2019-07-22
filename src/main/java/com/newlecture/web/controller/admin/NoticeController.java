@@ -33,6 +33,21 @@ public class NoticeController {
 	//@Autowired
 	//private SqlSessionTemplate sqlSesson;
 
+	@GetMapping("edit")
+	public String edit(Integer id) {
+		
+		
+		
+		return "admin/notice/edit";
+	}
+	
+	@PostMapping("edit")
+	public String edit(Notice notice) {
+		
+		return "redirect:detail?id="+notice.getId();
+	}
+	
+	
 	@GetMapping("detail")
 	public String detail(Integer id, Model model) throws ClassNotFoundException, SQLException {
 		
@@ -58,7 +73,7 @@ public class NoticeController {
 		
 		//List<NoticeView> list = sqlSesson.getMapper(NoticeDao.class).getList();
 		//NoticeDao noticeDao = sqlSesson.getMapper(NoticeDao.class);
-		List<NoticeView> list = noticeDao.getList(1);
+		List<NoticeView> list = noticeDao.getList();
 		
 		model.addAttribute("list", list);
 
