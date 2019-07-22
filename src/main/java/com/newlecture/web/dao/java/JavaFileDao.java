@@ -16,6 +16,9 @@ public class JavaFileDao implements FileDao {
 		
 		java.io.File directory = new java.io.File(path);
 		
+		if(!directory.exists())
+			directory.mkdir();
+		
 		java.io.File[] files = directory.listFiles();
 						
 		StringBuilder json = new StringBuilder();
