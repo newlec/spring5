@@ -62,14 +62,15 @@ window.addEventListener("load", function(){
         
         var request = new XMLHttpRequest();
         request.addEventListener("load", function(e){
-        	if(request.responseText == "okay"){
+        	if(request.responseText == "ok"){        		
         		// 목록을 새로 요청하기
-        		var request = new XMLHttpRequest();
-        		equest.addEventListener("load", function(e){
-        			alert(e.responseText);
+        		var req = new XMLHttpRequest();
+        		req.addEventListener("load", function(e1){
+        			alert(req.responseText);
         		});
-        		request.open("GET", "../../../file-list");
-                request.send();
+        		
+        		req.open("GET", "../../../file-list");
+                req.send();
 
         	}
         		
