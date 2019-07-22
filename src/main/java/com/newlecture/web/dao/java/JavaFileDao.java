@@ -1,6 +1,7 @@
 package com.newlecture.web.dao.java;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -27,7 +28,8 @@ public class JavaFileDao implements FileDao {
 			File f = new File(files[i]);		
 			json.append(f.toJSON());
 			
-			json.append(",");
+			if(files.length -1 > i)
+				json.append(",");
 		}
 		json.append("]");
 		
@@ -36,8 +38,19 @@ public class JavaFileDao implements FileDao {
 
 	@Override
 	public List<File> getList(String path) {
-		// TODO Auto-generated method stub
-		return null;
+		java.io.File directory = new java.io.File(path);
+		
+		if(!directory.exists())
+			directory.mkdir();
+		
+		java.io.File[] files = directory.listFiles();
+		
+		List<File> list = new ArrayList<>();
+					
+		for(int i=0; i<files.length; i++)
+			list.add(new File(files[i]));	
+		
+		return list;
 	}
 	
 }

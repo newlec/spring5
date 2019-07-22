@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.newlecture.web.dao.FileDao;
 
 @Controller
@@ -46,16 +47,26 @@ public class RootController {
 	
 	@GetMapping("file-list")
 	@ResponseBody
-	public String fileList(HttpServletRequest request) throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
+	public List<com.newlecture.web.entity.File> fileList(HttpServletRequest request) throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 		
 		ServletContext application = request.getServletContext();
 		String urlPath = "/upload";		
 		String realPath = application.getRealPath(urlPath);
 		System.out.println(realPath);
 		
-		String jsonList = fileDao.getJSONList(realPath);
-							
-		return jsonList;
+		// 방법 1 : 우리가 직접 만든 JSON 문자열
+		//String jsonList = fileDao.getJSONList(realPath);							
+		//return jsonList;
+		
+		// 방법 2 : Gson을 이용한 JSON 문자열
+		List<com.newlecture.web.entity.File> list 
+									= fileDao.getList(realPath);		
+		//Gson gson = new Gson();		
+		//return gson.toJson(list);
+		
+		// 방법 3 :  그냥 객체를 반환해보자...
+		
+		return list;
 	}
 	
 	
