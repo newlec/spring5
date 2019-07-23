@@ -88,7 +88,8 @@ public class NoticeController {
 		
 		model.addAttribute("list", list);
 
-		return "admin/notice/list";
+		//return "admin/notice/list"; // jsp 페이지를 찾기위한 url의 정보
+		return "list"; // tiles에게 페이지 조립을 부탁하기 위한 매핑 이름
 	}
 
 	// ## 4.x 이후 버전 방식 ##

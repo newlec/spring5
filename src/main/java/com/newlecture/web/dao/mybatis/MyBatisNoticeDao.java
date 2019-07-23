@@ -48,8 +48,7 @@ public class MyBatisNoticeDao implements NoticeDao {
 		
 		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);	
 				
-		return noticeDao.getList(page, field, query);
-		
+		return noticeDao.getList(page, field, query);		
 	}
 
 	@Override
