@@ -33,7 +33,7 @@
 		<if test="param1 != null">
 			AND NUM BETWEEN 1+(#{param1}-1)*10 AND #{param1}*10
 		</if>
-							
+	
 	</select>
 	
 <insert id="insert" parameterType="com.newlecture.web.entity.Notice">
@@ -55,5 +55,11 @@
 		regDate=#{regDate}
 	whre id=#{id}
 </update>
+
+<delete id="delete">
+	delete NOTICE WEHRE ID=#{id}
+</delete>
+
+
 	
 </mapper>

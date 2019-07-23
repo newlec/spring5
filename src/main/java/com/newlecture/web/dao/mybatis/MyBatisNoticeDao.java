@@ -89,8 +89,9 @@ public class MyBatisNoticeDao implements NoticeDao {
 
 	@Override
 	public int delete(int id) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		
+		return noticeDao.delete(id);
 	}
 
 	@Override
