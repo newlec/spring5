@@ -26,7 +26,7 @@ import com.newlecture.web.entity.NoticeView;
 @Controller("adminNoticeController")
 @RequestMapping("/admin/notice/")
 public class NoticeController {
-
+	
 	@Autowired
 	//@Qualifier("mybatisNoticeDao")
 	private NoticeDao noticeDao;
@@ -88,17 +88,18 @@ public class NoticeController {
 		
 		model.addAttribute("list", list);
 
-		//return "admin/notice/list"; // jsp 페이지를 찾기위한 url의 정보
-		return "list"; // tiles에게 페이지 조립을 부탁하기 위한 매핑 이름
+		return "admin/notice/list"; // jsp 페이지를 찾기위한 url의 정보
+		//return "admin.notice.list"; // tiles에게 페이지 조립을 부탁하기 위한 매핑 이름
 	}
-
+	
 	// ## 4.x 이후 버전 방식 ##
 	// GET 요청
 	@GetMapping("reg")
 	// @RequestMapping(value="reg", method=RequestMethod.GET)
 	public String reg() {
 
-		return "admin/notice/reg";
+		//return "admin/notice/reg";
+		return "admin.notice.reg";
 	}
 
 	// POST 요청

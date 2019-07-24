@@ -62,11 +62,17 @@ window.addEventListener("load", function(){
         
         var request = new XMLHttpRequest();
         request.addEventListener("load", function(e){
-        	if(request.responseText == "ok"){        		
+        	if(request.responseText == "ok"){
+        		
         		// 목록을 새로 요청하기
         		var req = new XMLHttpRequest();
         		req.addEventListener("load", function(e1){
         			alert(req.responseText);
+        			
+        			// 무엇을 할 것인가?
+        			// HTML5 API 하나를 사용해서 예제를 다루어본거죠?
+        			
+        			
         		});
         		
         		req.open("GET", "../../../file-list");

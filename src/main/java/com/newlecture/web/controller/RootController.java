@@ -142,11 +142,11 @@ public class RootController {
 	}
 
 	@RequestMapping("index")
-	@ResponseBody
+	//@ResponseBody
 	public String index() {
 
 		// return "Welcome Home!!!!";
-		return "환영합니다.";
+		return "root.index";
 	}
 
 	@RequestMapping("hello")

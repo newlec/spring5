@@ -1,12 +1,7 @@
-<%@page import="com.newlecture.web.dao.NoticeDao"%>
-<%@page import="java.util.Scanner"%>
-<%@page import="java.io.FileInputStream"%>
-<%@page import="com.newlecture.web.entity.Notice"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +25,7 @@
     
     <!-- --- header block -------------------------------------------------------------------------- -->
     <%-- <jsp:include page="../inc/header.jsp" /> --%>
+    <tiles:insertAttribute name="header" />
     
     <!-- --- visual block -------------------------------------------------------------------------- -->
     <div id="visual">
@@ -41,14 +37,17 @@
     <div id="body">
         <div class="content-box">
             
-            <jsp:include page="../../inc/aside.jsp" />
+            <%-- <jsp:include page="../../inc/aside.jsp" /> --%>
+            <tiles:insertAttribute name="aside" />
 
             <!-- main 부분 -->
+            <tiles:insertAttribute name="main" />
             <!-- <? style="clear:left;">막내양</?> -->
         </div>
         
     </div>
     <!-- --- footer block -------------------------------------------------------------------------- -->    
-    <jsp:include page="../../inc/footer.jsp" />
+    <%-- <jsp:include page="../../inc/footer.jsp" /> --%>
+    <tiles:insertAttribute name="footer" />
 </body>
 </html>

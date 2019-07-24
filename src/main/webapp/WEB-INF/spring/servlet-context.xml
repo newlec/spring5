@@ -21,7 +21,7 @@
 	                <list>
 	                    <value>text/html;charset=UTF-8</value>
 	                </list>
-	            </property>				
+	            </property>
 	        </bean>
 	    </mvc:message-converters>
 	</mvc:annotation-driven>
@@ -31,6 +31,15 @@
 <!-- 	<bean id="/notice/list" class="com.newlecture.web.controller.notice.ListController">
 		<property name="noticeDao"  ref="noticeDao" />
 	</bean> -->
+	
+	<!-- 타일즈 설정 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+       <property name="definitions"  value="/WEB-INF/tiles.xml"/>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    	<property name="viewClass"  value="org.springframework.web.servlet.view.tiles3.TilesView"/>    	
+    </bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"/>

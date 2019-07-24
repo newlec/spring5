@@ -12,7 +12,7 @@
 		<!-- <result column="regdate" property="regDate" jdbcType="TIMESTAMP"  javaType="java.util.Date"/>
 		<result column="hit" property="hit" jdbcType="NUMERIC" javaType="Integer"/> -->
 	</resultMap>
-		
+	
 	<!-- <select id="get" resultMap="noticeMap" > -->		
 	<select id="get" resultType="com.newlecture.web.entity.Notice">
 	
