@@ -13,8 +13,7 @@
                             <li>member</li>
                             <li>login</li>
                         </ol>
-                    </section>
-                                                            
+                    </section>                  
                     
                     <section>
                     	<h1>로그인 폼</h1>

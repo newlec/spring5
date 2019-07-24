@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
+<c:set var="ctxName" value="${pageContext.request.contextPath}" />
+
 	<header id="header">
         <div class="content-box">
             
@@ -33,12 +37,22 @@
                     <ul>
                         <li>HOME</li>
                         <li>
-                        <c:if test="${not empty id}">
-                        	<a href="/member/logout">로그아웃</a>
-                        </c:if>
-                        <c:if test="${empty id}">
-                        	<a href="/member/login">로그인</a>
-                        </c:if>
+                        
+                        <security:authorize access="hasRole('ADMIN')">
+                        관리자만 볼 수 있는 내용
+                        </security:authorize>
+                        
+                        <security:authorize access="isAuthenticated()">
+                        	<%-- <a href="${ctxName}/logout">로그아웃</a> --%>
+                        	<form action="${ctxName}/member/logout" method="post">
+                        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        		<input type="submit" value="로그아웃" >
+                        	</form>
+                        </security:authorize>
+                        
+                        <security:authorize access="isAnonymous()">
+                        	<a href="${ctxName}/member/login">로그인</a>
+                        </security:authorize>
                         </li>
                         <li>회원가입</li>
                     </ul>
