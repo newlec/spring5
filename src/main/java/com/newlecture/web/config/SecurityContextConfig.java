@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -38,12 +40,13 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/admin/**")
-					.hasRole("ROLE_ADMIN")
+					.hasRole("ADMIN")
 				.antMatchers("/student/**")
-					.hasAnyRole("ROLE_STUDENT", "ROLE_ADMIN")
+					.hasAnyRole("STUDENT", "ADMIN")
 				.and()
 			.formLogin()
 				.loginPage("/member/login")
+				.loginProcessingUrl("/member/login")
 				.defaultSuccessUrl("/index")
 				.and()
 			.logout()
