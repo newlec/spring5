@@ -1,5 +1,8 @@
 package com.newlecture.web.config;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class DispatcherServletInitalizer extends AbstractAnnotationConfigDispatcherServletInitializer{
@@ -22,7 +25,21 @@ public class DispatcherServletInitalizer extends AbstractAnnotationConfigDispatc
 	@Override
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
-		return null;
+		return new String[] {"/"};
 	}
+	
+	@Override
+	protected Filter[] getServletFilters() {
+		
+		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+		encodingFilter.setEncoding("UTF-8");
+		encodingFilter.setForceEncoding(true);
+		
+		return new Filter[] {
+				encodingFilter
+		};
+	}
+	
+	
 
 }
