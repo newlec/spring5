@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.newlecture.web.dao.NoticeDao;
@@ -107,6 +109,7 @@ public class NoticeController {
 	@PostMapping("reg")
 	public String reg(Notice notice
 			, String category
+			, Principal principal
 			, MultipartFile file
 			, HttpServletRequest request) throws IOException, ClassNotFoundException, SQLException {
 		// public String reg(Notice notice) {
@@ -182,8 +185,9 @@ public class NoticeController {
 		fis.close();
 		fos.close();
 		
+		// 현재 로그인 한 사용자 계정을 얻는 방법
 		
-		notice.setWriterId("newlec");
+		notice.setWriterId(principal.getName());
 		noticeDao.insert(notice);
 		
 
