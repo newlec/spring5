@@ -14,10 +14,9 @@
                             <li>공지사항</li>
                         </ol>
                     </section>
-                                                            
                     
                     <section>
-	                    <form action="reg" method="post"  enctype="multipart/form-data">
+	                    <form action="reg?${_csrf.parameterName}=${_csrf.token}" method="post"  enctype="multipart/form-data">
 	                    	<h1>공지사항 내용</h1>
 	                    	<table>
 	                    		<tbody>
@@ -46,6 +45,7 @@
 	                    		</tbody>
 	                    	</table>
 	                    	<div>	                    		
+	                    		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 	                    		<input type="submit" value="저장" >
 	                    		<a href="list">취소</a>
 	                    	</div>	

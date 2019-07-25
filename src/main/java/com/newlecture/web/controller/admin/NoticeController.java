@@ -185,8 +185,7 @@ public class NoticeController {
 		fis.close();
 		fos.close();
 		
-		// 현재 로그인 한 사용자 계정을 얻는 방법
-		
+		// 현재 로그인 한 사용자 계정을 얻는 방법		
 		notice.setWriterId(principal.getName());
 		noticeDao.insert(notice);
 		
