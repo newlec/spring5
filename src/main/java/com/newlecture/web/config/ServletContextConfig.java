@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 
 //@Configuration
 @ComponentScan(basePackages="com.newlecture.web.controller")
+@EnableWebMvc
 public class ServletContextConfig implements WebMvcConfigurer {
 	
 	/* == mvc ¼³Á¤ ======================================= */
