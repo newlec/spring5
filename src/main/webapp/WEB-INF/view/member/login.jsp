@@ -22,7 +22,7 @@
                     		아이디 또는 비밀번호가 유효하지 않습니다.
                     	</div>
                     	</c:if>
-                    	<form action="../login" method="post">
+                    	<form method="post">
                     	<table>                  		
      		<tbody>
      			<tr>
