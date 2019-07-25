@@ -30,6 +30,8 @@
 	<http>
 		<intercept-url pattern="/admin/**" 
 			access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/student/**" 
+			access="hasRole('ROLE_STUDENT)"/>
 		
 		<form-login
 			login-page="/member/login"
