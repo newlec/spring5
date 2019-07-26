@@ -124,12 +124,12 @@ public class NoticeController {
 		// 1. 업로드 경로를 얻기
 		String urlPath = "/upload";
 		String path = request.getServletContext().getRealPath(urlPath);
-
+		
 		System.out.println(path);
-
+		
 		// 2. 업로드된 파일명 얻기
 		String fileName = file.getOriginalFilename();//filePart.getSubmittedFileName();
-
+		
 		// 3. 경로 구분자 넣기
 		String filePath = path + File.separator + fileName; // d:\aa + "bb.jpg" -> d:\aabb.jpg
 
@@ -139,7 +139,7 @@ public class NoticeController {
 		File pathFile = new File(path);
 		if (!pathFile.exists()) // 존재하지 않으면
 			pathFile.mkdirs();// 생성해주세요.
-
+		
 		// 5. 동일한 파일명에 경로에 이미 존재하는 문제 : 이름 정책
 		// aa.jpg -> aa.jpg1 ==> aa1.jpg
 		// aa1.jpg -> aa(1).jpg

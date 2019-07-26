@@ -12,6 +12,7 @@ window.addEventListener("load", function(){
         if(e.dataTransfer.types[0] == "Files"){
             dropZone.classList.add("valide");
             dropZone.classList.remove("invalide");
+            
         }
         else{
             dropZone.classList.remove("valide");

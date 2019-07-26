@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -69,13 +71,15 @@ public class ServletContextConfig implements WebMvcConfigurer {
 		
 		resolver.setPrefix("/WEB-INF/view/");
 		resolver.setSuffix(".jsp");
-				
+		
 		return resolver;
 	}
 	
-	public CommonsMultipartResolver commonsMultipartResolver() {
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
 		
 		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		//resolver.setResolveLazily(false);
 		resolver.setMaxUploadSize(3145728000L);
 		
 		return resolver;
