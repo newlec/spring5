@@ -61,7 +61,6 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 			//	.disable()
 			;
 		
-				
 	}
 	
 	@Bean

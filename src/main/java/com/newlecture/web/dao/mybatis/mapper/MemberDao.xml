@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.newlecture.web.dao.MemeberDao">
+<mapper namespace="com.newlecture.web.dao.MemberDao">
 	
 	<select id="get" resultType="com.newlecture.web.entity.Member">
 	
