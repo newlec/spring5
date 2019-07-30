@@ -11,17 +11,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.type.JdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.newlecture.web.dao.NoticeDao;
+import com.newlecture.web.entity.MyUser;
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.entity.NoticeView;
 
@@ -73,7 +72,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("list")
-	public String list(Model model) throws ClassNotFoundException, SQLException {
+	public String list(Model model, Principal principal) throws ClassNotFoundException, SQLException {
+		
 		
 		//1. 技记 档备甫 积己秦辑
 		//    SqlSession sqlSession = ?;
@@ -99,8 +99,8 @@ public class NoticeController {
 	// GET 夸没
 	@GetMapping("reg")
 	// @RequestMapping(value="reg", method=RequestMethod.GET)
-	public String reg() {
-
+	public String reg(Principal principal) {
+		
 		//return "admin/notice/reg";
 		return "admin.notice.reg";
 	}
